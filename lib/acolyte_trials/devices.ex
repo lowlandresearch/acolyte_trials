@@ -7,6 +7,7 @@ defmodule AcolyteTrials.Devices do
   alias AcolyteTrials.Repo
 
   alias AcolyteTrials.Devices.Device
+  alias AcolyteTrials.Accounts
 
   @doc """
   Returns the list of devices.
@@ -18,7 +19,9 @@ defmodule AcolyteTrials.Devices do
 
   """
   def list_devices do
-    Repo.all(Device)
+    Device
+    |> Repo.all()
+    |> Repo.preload(:user)
   end
 
   @doc """
@@ -35,7 +38,11 @@ defmodule AcolyteTrials.Devices do
       ** (Ecto.NoResultsError)
 
   """
-  def get_device!(id), do: Repo.get!(Device, id)
+  def get_device!(id) do
+    Device
+    |> Repo.get!(id)
+    |> Repo.preload(:user)
+  end
 
   @doc """
   Creates a device.

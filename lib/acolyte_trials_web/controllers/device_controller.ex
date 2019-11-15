@@ -3,6 +3,7 @@ defmodule AcolyteTrialsWeb.DeviceController do
 
   alias AcolyteTrials.Devices
   alias AcolyteTrials.Devices.Device
+  alias AcolyteTrials.Accounts
 
   def index(conn, _params) do
     devices = Devices.list_devices()
@@ -58,5 +59,16 @@ defmodule AcolyteTrialsWeb.DeviceController do
     conn
     |> put_flash(:info, "Device deleted successfully.")
     |> redirect(to: Routes.device_path(conn, :index))
+  end
+
+  def action(conn, _) do
+    args = [conn, conn.params]
+    apply(__MODULE__, action_name(conn), args)
+  end
+
+  plug :load_users when action in [:new, :create, :edit, :update]
+
+  defp load_users(conn, _) do
+    assign(conn, :users, Accounts.list_alphabetical_users())
   end
 end
