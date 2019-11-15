@@ -6,6 +6,10 @@
     <strong>Config hash:</strong>
     <%= @device.config_hash %>
   </li>
+  <li>
+    <strong>User:</strong>
+    <%= render AcolyteTrialsWeb.UserView, "user.html", user: @device.user %>
+  </li>
 
 </ul>
 

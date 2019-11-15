@@ -4,6 +4,7 @@ defmodule AcolyteTrials.Devices.Device do
 
   schema "devices" do
     field :config_hash, :string
+    belongs_to :user, AcolyteTrials.Accounts.User
 
     timestamps()
   end
@@ -11,7 +12,7 @@ defmodule AcolyteTrials.Devices.Device do
   @doc false
   def changeset(device, attrs) do
     device
-    |> cast(attrs, [:config_hash])
+    |> cast(attrs, [:config_hash, :user_id])
     |> validate_required([:config_hash])
   end
 end

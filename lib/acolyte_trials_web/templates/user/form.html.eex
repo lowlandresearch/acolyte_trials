@@ -5,13 +5,13 @@
     </div>
   <% end %>
 
-  <%= label f, :config_hash %>
-  <%= text_input f, :config_hash %>
-  <%= error_tag f, :config_hash %>
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
 
-  <%= label f, :user_id, "User" %>
-  <%= select f, :user_id, user_select_options(@users),
-      prompt: "Choose a user" %>
+  <%= label f, :github_username %>
+  <%= text_input f, :github_username %>
+  <%= error_tag f, :github_username %>
 
   <div>
     <%= submit "Save" %>

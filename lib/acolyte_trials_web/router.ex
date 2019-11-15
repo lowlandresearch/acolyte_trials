@@ -20,6 +20,9 @@ defmodule AcolyteTrialsWeb.Router do
 
     resources "/devices", DeviceController,
       only: [:index, :show, :new, :create, :edit, :update, :delete]
+
+    resources "/users", UserController,
+      only: [:index, :show, :new, :create, :edit, :update, :delete]
   end
 
   # Other scopes may use custom stacks.

@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Config hash</th>
+      <th>User</th>
 
       <th></th>
     </tr>
@@ -12,7 +13,9 @@
 <%= for device <- @devices do %>
     <tr>
       <td><%= device.config_hash %></td>
-
+      <td>
+        <%= render AcolyteTrialsWeb.UserView, "user.html", user: device.user %>
+      </td>
       <td>
         <span><%= link "Show", to: Routes.device_path(@conn, :show, device) %></span>
         <span><%= link "Edit", to: Routes.device_path(@conn, :edit, device) %></span>
