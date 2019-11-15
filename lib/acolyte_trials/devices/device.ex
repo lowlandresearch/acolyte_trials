@@ -14,6 +14,6 @@ defmodule AcolyteTrials.Devices.Device do
     device
     |> cast(attrs, [:config_hash, :user_id])
     |> validate_required([:config_hash])
-    |> unique_constraint(:user_id)
+    |> unique_constraint(:user_id, message: "User already has a device assigned")
   end
 end
