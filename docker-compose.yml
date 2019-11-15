@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+  app:
+    build:
+      context: "."
+      dockerfile: "Dockerfile"
+    depends_on:
+      - db
+    ports:
+      - 4000:4000
+      - 4443:4443
+    volumes:
+      - .:/opt/app
+      ## uncomment the below lines if you want to see the contents of the
+      ## container's deps/ and _build/ directories in your local project,
+      ## under container_mix
+      # - ./container_mix_artifacts:/opt/mix_artifacts
+  
+  db:
+    image: "postgres:9.6.11"
+    ports:
+      - 6543:5432
+
