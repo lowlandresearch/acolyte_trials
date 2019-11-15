@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>AcolyteTrials · Phoenix Framework</title>
+    <title>AcolyteTrials</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body>
@@ -12,7 +12,8 @@
       <section class="container">
         <nav role="navigation">
           <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
+            <li><%= link "Devices", to: Routes.device_path(@conn, :index) %></li>
+            <li><%= link "Users", to: Routes.user_path(@conn, :index) %></li>
           </ul>
         </nav>
         <a href="http://phoenixframework.org/" class="phx-logo">
