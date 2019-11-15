@@ -10,6 +10,6 @@ defmodule AcolyteTrials.Repo.Migrations.CreateDevices do
     end
 
     create(unique_index(:devices, [:config_hash]))
-    create(index(:devices, [:user_id]))
+    create(unique_index(:devices, [:user_id]))
   end
 end

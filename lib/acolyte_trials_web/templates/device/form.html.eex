@@ -12,6 +12,7 @@
   <%= label f, :user_id, "User" %>
   <%= select f, :user_id, user_select_options(@users),
       prompt: "Choose a user" %>
+  <%= error_tag f, :user_id %>
 
   <div>
     <%= submit "Save" %>
