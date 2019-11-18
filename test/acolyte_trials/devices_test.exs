@@ -10,15 +10,6 @@ defmodule AcolyteTrials.DevicesTest do
     @update_attrs %{config_hash: "some updated config_hash"}
     @invalid_attrs %{config_hash: nil}
 
-    def device_fixture(attrs \\ %{}) do
-      {:ok, device} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Devices.create_device()
-
-      device
-    end
-
     test "list_devices/0 returns all devices" do
       device = device_fixture()
       assert Devices.list_devices() == [device]

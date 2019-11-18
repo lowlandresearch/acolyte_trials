@@ -3,8 +3,6 @@ defmodule AcolyteTrials.Accounts.User do
   import Ecto.Changeset
   import Ecto.Query
 
-  alias AcolyteTrials.Accounts.User
-
   schema "users" do
     field :name, :string
     field :github_username, :string

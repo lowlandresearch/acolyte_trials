@@ -10,15 +10,6 @@ defmodule AcolyteTrials.AccountsTest do
     @update_attrs %{github_username: "some updated github_username", name: "some updated name"}
     @invalid_attrs %{github_username: nil, name: nil}
 
-    def user_fixture(attrs \\ %{}) do
-      {:ok, user} =
-        attrs
-        |> Enum.into(@valid_attrs)
-        |> Accounts.create_user()
-
-      user
-    end
-
     test "list_users/0 returns all users" do
       user = user_fixture()
       assert Accounts.list_users() == [user]
