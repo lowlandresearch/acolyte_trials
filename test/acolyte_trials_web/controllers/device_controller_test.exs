@@ -1,16 +1,9 @@
 defmodule AcolyteTrialsWeb.DeviceControllerTest do
   use AcolyteTrialsWeb.ConnCase
 
-  alias AcolyteTrials.Devices
-
   @create_attrs %{config_hash: "some config_hash"}
   @update_attrs %{config_hash: "some updated config_hash"}
   @invalid_attrs %{config_hash: nil}
-
-  def fixture(:device) do
-    {:ok, device} = Devices.create_device(@create_attrs)
-    device
-  end
 
   describe "index" do
     test "lists all devices", %{conn: conn} do
@@ -83,7 +76,7 @@ defmodule AcolyteTrialsWeb.DeviceControllerTest do
   end
 
   defp create_device(_) do
-    device = fixture(:device)
+    device = device_fixture(@create_attrs)
     {:ok, device: device}
   end
 end

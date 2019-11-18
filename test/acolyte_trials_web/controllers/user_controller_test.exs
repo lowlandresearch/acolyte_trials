@@ -1,16 +1,9 @@
 defmodule AcolyteTrialsWeb.UserControllerTest do
   use AcolyteTrialsWeb.ConnCase
 
-  alias AcolyteTrials.Accounts
-
   @create_attrs %{github_username: "some github_username", name: "some name"}
   @update_attrs %{github_username: "some updated github_username", name: "some updated name"}
   @invalid_attrs %{github_username: nil, name: nil}
-
-  def fixture(:user) do
-    {:ok, user} = Accounts.create_user(@create_attrs)
-    user
-  end
 
   describe "index" do
     test "lists all users", %{conn: conn} do
@@ -75,6 +68,7 @@ defmodule AcolyteTrialsWeb.UserControllerTest do
     test "deletes chosen user", %{conn: conn, user: user} do
       conn = delete(conn, Routes.user_path(conn, :delete, user))
       assert redirected_to(conn) == Routes.user_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.user_path(conn, :show, user))
       end
@@ -82,7 +76,7 @@ defmodule AcolyteTrialsWeb.UserControllerTest do
   end
 
   defp create_user(_) do
-    user = fixture(:user)
+    user = user_fixture(@create_attrs)
     {:ok, user: user}
   end
 end
