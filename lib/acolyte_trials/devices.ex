@@ -7,7 +7,6 @@ defmodule AcolyteTrials.Devices do
   alias AcolyteTrials.Repo
 
   alias AcolyteTrials.Devices.Device
-  alias AcolyteTrials.Accounts
 
   @doc """
   Returns the list of devices.
@@ -42,6 +41,23 @@ defmodule AcolyteTrials.Devices do
     Device
     |> Repo.get!(id)
     |> Repo.preload(:user)
+  end
+
+  @doc """
+  Gets a single device by attribute
+
+  Returns nil if no device is found
+
+  ## Examples
+
+    iex> get_device_by(config_hash: "123")
+    %Device{}
+
+    iex> get_device_by(config_hash: "nonexistent")
+    nil
+  """
+  def get_device_by(params) do
+    Repo.get_by(Device, params)
   end
 
   @doc """
