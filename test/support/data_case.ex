@@ -24,7 +24,7 @@ defmodule AcolyteTrials.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import AcolyteTrials.DataCase
-      import AcolyteTrials.TestHelpers
+      import AcolyteTrials.Fixtures
     end
   end
 

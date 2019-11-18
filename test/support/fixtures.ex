@@ -1,4 +1,4 @@
-defmodule AcolyteTrials.TestHelpers do
+defmodule AcolyteTrials.Fixtures do
   alias AcolyteTrials.{Accounts, Devices}
 
   def user_fixture(attrs \\ %{}) do
