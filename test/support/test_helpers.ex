@@ -13,10 +13,10 @@ defmodule AcolyteTrials.TestHelpers do
     user
   end
 
-  def insert_device(attrs \\ %{}) do
+  def device_fixture(attrs \\ %{}) do
     {:ok, device} =
       attrs
-      |> Enum.into( %{
+      |> Enum.into(%{
         config_hash: "12345678910"
       })
       |> Devices.create_device()
