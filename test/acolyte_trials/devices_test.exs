@@ -12,12 +12,24 @@ defmodule AcolyteTrials.DevicesTest do
 
     test "list_devices/0 returns all devices" do
       device = device_fixture()
-      assert Devices.list_devices() == [device]
+      retrieved_devices = Devices.list_devices()
+
+      assert retrieved_devices != []
+
+      retrieved_device = hd(retrieved_devices)
+      assert retrieved_device.id == device.id
     end
 
     test "get_device!/1 returns the device with given id" do
       device = device_fixture()
-      assert Devices.get_device!(device.id) == device
+      retrieved_device = Devices.get_device!(device.id)
+      assert retrieved_device.id == device.id
+    end
+
+    test "get_device_by/1 returns the device with given param" do
+      device = device_fixture(@valid_attrs)
+      retrieved_device = Devices.get_device_by(@valid_attrs)
+      assert retrieved_device.id == device.id
     end
 
     test "create_device/1 with valid data creates a device" do
@@ -38,7 +50,9 @@ defmodule AcolyteTrials.DevicesTest do
     test "update_device/2 with invalid data returns error changeset" do
       device = device_fixture()
       assert {:error, %Ecto.Changeset{}} = Devices.update_device(device, @invalid_attrs)
-      assert device == Devices.get_device!(device.id)
+
+      retrieved_device = Devices.get_device!(device.id)
+      assert retrieved_device.id == device.id
     end
 
     test "delete_device/1 deletes the device" do
