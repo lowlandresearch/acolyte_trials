@@ -19,6 +19,7 @@ defmodule AcolyteTrialsWeb.ChannelCase do
     quote do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
+      import AcolyteTrials.TestHelpers
 
       # The default endpoint for testing
       @endpoint AcolyteTrialsWeb.Endpoint
