@@ -57,7 +57,9 @@ defmodule AcolyteTrials.Devices do
     nil
   """
   def get_device_by(params) do
-    Repo.get_by(Device, params)
+    Device
+    |> Repo.get_by(params)
+    |> Repo.preload(:user)
   end
 
   @doc """
