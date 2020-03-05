@@ -46,32 +46,30 @@ jobs:
           mix deps.get
 
       - run: mix format --check-formatted
-      - run: mix test
-      - run: mix coveralls.github
+      - run: MIX_ENV=test mix coveralls.json
 
-  deploy:
-    # only run this job if the verify job succeeds
-    needs: verify
-
-    # only run this job if the workflow is running on the master branch
-    if: github.ref == 'refs/heads/master'
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-        # actions/checkout@v2 only checks out the latest commit,
-        # so we need to tell it to check out the entire master branch
+      - uses: codecov/codecov-action@v1
         with:
-          ref: master
-          fetch-depth: 0
-
-      # configure the gigalixir-actions with our credentials and app name
-      - name: Gigalixir Action
-        uses: mhanberg/gigalixir-action@0.1.0
-        with:
-          GIGALIXIR_USERNAME: ${{ secrets.GIGALIXIR_USERNAME }}
-          GIGALIXIR_PASSWORD: ${{ secrets.GIGALIXIR_PASSWORD }}
-          GIGALIXIR_APP: playful-mintcream-pacificparrotlet
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          file: ./cover/excoveralls.json
+          flags: unittests
+  # deploy:
+  #   # only run this job if the verify job succeeds
+  #   needs: verify
+  #   # only run this job if the workflow is running on the master branch
+  #   if: github.ref == 'refs/heads/master'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       # actions/checkout@v2 only checks out the latest commit,
+  #       # so we need to tell it to check out the entire master branch
+  #       with:
+  #         ref: master
+  #         fetch-depth: 0
+  #     # configure the gigalixir-actions with our credentials and app name
+  #     - name: Gigalixir Action
+  #       uses: mhanberg/gigalixir-action@0.1.0
+  #       with:
+  #         GIGALIXIR_USERNAME: ${{ secrets.GIGALIXIR_USERNAME }}
+  #         GIGALIXIR_PASSWORD: ${{ secrets.GIGALIXIR_PASSWORD }}
+  #         GIGALIXIR_APP: playful-mintcream-pacificparrotlet
+  #         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
