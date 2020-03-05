@@ -1,19 +1,18 @@
 # AcolyteTrials
 
-To start your Phoenix server:
+![.github/workflows/elixir.yml](https://github.com/lowlandresearch/acolyte_trials/workflows/.github/workflows/elixir.yml/badge.svg)
+[![codecov](https://codecov.io/gh/lowlandresearch/acolyte_trials/branch/master/graph/badge.svg)](https://codecov.io/gh/lowlandresearch/acolyte_trials)
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
+Acolyte Trials is an API service for handling authentication, session management, and device management for Computer Science courseware.  Each student can only participate with their registered device to help ensure academic honesty.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Authentication
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+Github OAuth2 is currently supported.
 
-## Learn more
+## Session Management
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+TBD
+
+## Device Registration
+
+TBD
