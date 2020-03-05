@@ -5,12 +5,13 @@ defmodule AcolyteTrials.MixProject do
     [
       app: :acolyte_trials,
       version: "0.1.0",
-      elixir: "~> 1.10.2",
+      elixir: "~> 1.10",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls]
     ]
   end
 
@@ -44,7 +45,8 @@ defmodule AcolyteTrials.MixProject do
       {:pow, "~> 1.0"},
       {:pow_assent, "~> 0.4"},
       {:mint, "~> 1.0"},
-      {:castore, "~> 0.1.5"}
+      {:castore, "~> 0.1.5"},
+      {:excoveralls, "~> 0.12.2", only: :test}
     ]
   end
 
